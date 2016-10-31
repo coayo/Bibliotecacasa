@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class CatAdapter extends RecyclerView.Adapter<CatAdapter.CatViewHolder> {
 
-    private List<String> ListaCtgs;
+    private ArrayList<String> ListaCtgs;
     //TextView CatName;
 
     // Clase que maneja los datos al textview que recibira el dato bindeado
-    public static class CatViewHolder extends RecyclerView.ViewHolder{
+    public class CatViewHolder extends RecyclerView.ViewHolder{
         public TextView textviewCatName;
 
         public CatViewHolder(View v){
@@ -26,23 +26,25 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.CatViewHolder> {
     /*Hasta aqui la clase del viewHolder*/
 
 
-    public CatAdapter(List<String> categorias){
+    public CatAdapter(ArrayList<String> categorias){
         this.ListaCtgs = categorias;
     }
 
     @Override
     public CatAdapter.CatViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
             View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.categoria, viewGroup,false);
-
-                    return new CatViewHolder(v);
+            CatAdapter.CatViewHolder elvholder = new CatViewHolder(v);
+                    return elvholder;
     }
 
     @Override
     public void onBindViewHolder(CatAdapter.CatViewHolder holder, int position) {
-            holder.textviewCatName.setText(ListaCtgs.get(position));
+            String cat= this.ListaCtgs.get(position);
+            holder.textviewCatName.setText(cat);
+
     }
 
-    public int getItemCount() {
+     public int getItemCount() {
         return ListaCtgs.size();
     }
 }

@@ -30,4 +30,5 @@ dependencies {
 
     testCompile 'org.testng:testng:6.9.6'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:cardview-v7:24.2.1'
 }
